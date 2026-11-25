@@ -1,6 +1,6 @@
-# X Bulk Scheduler
+# Queuebird
 
-A Tampermonkey userscript that harvests video links from X bookmarks and Likes,
+A Tampermonkey userscript that collects video links from X bookmarks and Likes,
 resolves wrapper posts to the original status, keeps a per-account library, and
 drives X's native scheduler.
 
@@ -9,14 +9,19 @@ drives X's native scheduler.
 > Read [project status](docs/PROJECT-STATUS.md) and [roadmap](docs/ROADMAP.md)
 > before relying on it.
 
+Formerly `x-bulk-scheduler`. The repository was renamed in M0; old GitHub URLs
+redirect. The userscript filename is intentionally unchanged so installed copies
+keep auto-updating.
+
 ## Safety
 
 - Dry-run is the default. Nothing is posted, liked or removed until you switch
   the relevant mode to live.
 - Earlier live tests of this source duplicated composer text and the schedule
   picker's selected instant is unverified. Do not use it for unattended posting.
-- Account automation carries a real risk of limits or bans. The product is
-  assistive, not a bot farm. See the automation boundaries in `#98`.
+- The tool only runs while an X tab is open. It is assistive, not a bot farm.
+- Account automation carries a real risk of limits or bans. See
+  [safety policy](docs/SAFETY-POLICY.md).
 
 ## Install / auto-update
 
@@ -26,6 +31,12 @@ Open the raw link in a browser with Tampermonkey installed:
 
 Tampermonkey will offer to install it and will auto-update from the same URL.
 `main` is the auto-update source, so merging code affects installed users.
+
+### Upgrading from X Bulk Scheduler
+
+The script identity is `@name Queuebird` with the original `@namespace
+x-bulk-scheduler`, so Tampermonkey updates in place. If it installs alongside the
+old entry instead, remove the old entry once; the storage keys are unchanged.
 
 ## Development
 
@@ -40,10 +51,12 @@ request.
 
 ## Project
 
-- [Project status](docs/PROJECT-STATUS.md) — what works, what is claimed, top risks
-- [Roadmap](docs/ROADMAP.md) — phases M0–M7 and the module map
-- [Legacy issue queue](docs/ISSUE-QUEUE.md) — historical record, frozen during M0
-- [Functionality test matrix](docs/FUNCTIONALITY-TESTS.md) — historical tests
+- [Project status](docs/PROJECT-STATUS.md) - what works, what is claimed, top risks
+- [Roadmap](docs/ROADMAP.md) - phases M0-M7 and the module map
+- [Dashboard IA](docs/DASHBOARD-IA.md) - workspaces and navigation
+- [Safety policy](docs/SAFETY-POLICY.md) - automation boundaries
+- [Legacy issue queue](docs/ISSUE-QUEUE.md) - historical record, frozen during M0
+- [Functionality test matrix](docs/FUNCTIONALITY-TESTS.md) - historical tests
 
 Work is tracked on the **X Scheduler Rebuild** project board. New issues use
-`type:` / `area:` / `prio:` / `status:` / `size:` labels and an M0–M7 milestone.
+`type:` / `area:` / `prio:` / `status:` / `size:` labels and an M0-M7 milestone.

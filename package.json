@@ -1,8 +1,8 @@
 {
-  "name": "x-bulk-scheduler",
-  "version": "0.13.0",
+  "name": "queuebird",
+  "version": "0.13.1",
   "private": true,
-  "description": "Tampermonkey userscript that harvests X video links and drives the native scheduler",
+  "description": "Queuebird - Tampermonkey userscript that collects X video links and drives the native scheduler",
   "engines": {
     "node": ">=20"
   },

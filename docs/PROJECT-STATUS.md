@@ -1,6 +1,6 @@
 # Project status
 
-**Snapshot:** 2026-11-25 · `main` at `dccab60` · repository `eleven-smg/x-bulk-scheduler`
+**Snapshot:** 2026-11-25 · `main` at `692cdb6` · repository `eleven-smg/queuebird` (renamed from `x-bulk-scheduler`)
 
 This document is the maintainer view. It is deliberately short. The test matrix
 and the legacy issue queue remain as history, not as the current plan.
@@ -86,22 +86,33 @@ close the superseded drafts. Valuable logic from the drafts is ported, not merge
    noise. Mitigation: milestones, a board, a definition of done, and closing
    superseded work aggressively.
 
-## 6. Decisions pending
+## 6. Decisions
 
-| Decision | Issue | Recommendation |
+Decided on 2026-11-25:
+
+| Decision | Outcome | Record |
 |---|---|---|
-| Runtime target | #84 | Hybrid: pure `core/` + userscript adapter + extension adapter |
-| Product name / repo rename | #85 | **Postdeck**; rename in M0, before any release |
-| Dashboard information architecture | #86 | Seven workspaces, one product, one shared state |
-| Automation boundaries | #98 | Assistive only; no account creation, no mass follow |
+| Runtime target | Hybrid: pure `core/` + userscript adapter + extension adapter | #84 |
+| Product name | **Queuebird**; repository renamed, old URLs redirect | #85 |
+| Dashboard IA | Seven workspaces, one product, one shared state | #86, `docs/DASHBOARD-IA.md` |
+| Automation boundaries | Assistive only; browser tab must be open; no account creation | #98, `docs/SAFETY-POLICY.md` |
+
+Consequences:
+
+- No headless runner is planned. Unattended posting is out of scope.
+- The userscript stays as the mobile adapter; the extension becomes the primary
+  desktop shell.
+- The source filename stays `src/x-bulk-scheduler.user.js` until a release can
+  migrate the update URL without breaking installed copies.
 
 ## 7. Immediate next steps (M0)
 
-1. Answer the four decisions above.
-2. Land CI + a working `npm test` (#87, #88).
-3. Extract `core/` behind tests (#90).
-4. Freeze and map the legacy backlog; close superseded drafts (#99).
-5. Cut the first tagged release only after CI is green.
+1. ~~Answer the four decisions~~ Done.
+2. ~~Land CI and a working `npm test`~~ CI landed (#87); fixtures and a browser
+   smoke suite remain (#88).
+3. Close the 16 draft PRs and record why (#99, partial).
+4. Extract `core/` behind tests (#90, #91, #92).
+5. Cut the first tagged release only after CI is green (#89).
 
 ## 8. How we work
 

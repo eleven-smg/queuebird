@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         X Bulk Scheduler
+// @name         Queuebird
 // @namespace    x-bulk-scheduler
-// @version      0.13.0
-// @description  Harvest video links from bookmarks/likes/official promo posts, prune dead links, and hand them to X's native scheduler. Mobile-friendly (Firefox Android + Tampermonkey).
-// @updateURL    https://raw.githubusercontent.com/eleven-smg/x-bulk-scheduler/main/src/x-bulk-scheduler.user.js
-// @downloadURL  https://raw.githubusercontent.com/eleven-smg/x-bulk-scheduler/main/src/x-bulk-scheduler.user.js
+// @version      0.13.1
+// @description  Collect video links from X bookmarks and Likes, keep a per-account library, and drive X's native scheduler. Mobile-friendly (Firefox Android + Tampermonkey).
+// @updateURL    https://raw.githubusercontent.com/eleven-smg/queuebird/main/src/x-bulk-scheduler.user.js
+// @downloadURL  https://raw.githubusercontent.com/eleven-smg/queuebird/main/src/x-bulk-scheduler.user.js
 // @match        https://x.com/*
 // @match        https://twitter.com/*
 // @grant        GM_setValue
@@ -17,7 +17,7 @@
 // ==/UserScript==
 
 /*
- * STATUS: v0.13.0 — dry-run harvest confirmed on-device (11 links exported).
+ * STATUS: v0.13.1 (Queuebird) — dry-run harvest confirmed on-device (11 links exported).
  * This build fixes what that run exposed:
  *  - Bookmarks/Likes moved to the unified History page (x.com/i/history[/likes]).
  *  - Wrapper links: a bookmarked/liked post that only EMBEDS another post's video
@@ -1898,7 +1898,7 @@
     wrap.style.cssText = 'position:fixed;z-index:99999;right:8px;bottom:8px;width:230px;font:12px/1.4 sans-serif;background:#15202b;color:#fff;border:1px solid #38444d;border-radius:10px;padding:8px;box-shadow:0 4px 12px rgba(0,0,0,.4)';
     wrap.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <b>X Bulk Scheduler</b>
+        <b>Queuebird</b>
         <span id="xbs-min" style="cursor:pointer;padding:0 6px">_</span>
       </div>
       <div id="xbs-body">
