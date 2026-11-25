@@ -1,22 +1,38 @@
-# X Bulk Scheduler (userscript)
+# X Bulk Scheduler
 
-A Tampermonkey userscript intended to collect video links from X bookmarks and
-Likes, identify sources and use X's scheduler. Source attribution and safe
-dead-link handling are not fully verified. See the [test matrix](docs/FUNCTIONALITY-TESTS.md)
-and [issue queue](docs/ISSUE-QUEUE.md) before use.
+A Tampermonkey userscript that harvests video links from X bookmarks and Likes,
+resolves wrapper posts to the original status, keeps a per-account library, and
+drives X's native scheduler.
 
-**Safety:** Earlier tests of the same public userscript source found past
-scheduled times and duplicate composer insertion. Do not rely on it for live
-posting or automatic cleanup until those issues and installed behavior are
-verified. `main` is the auto-update source; merging code can affect installed
-users. Preview/test builds are separate and are not assumed deployed.
+> **Status: in restructuring.** The current `main` is a single-file userscript
+> that works but is being rebuilt into a modular core with a proper dashboard.
+> Read [project status](docs/PROJECT-STATUS.md) and [roadmap](docs/ROADMAP.md)
+> before relying on it.
+
+## Safety
+
+- Dry-run is the default. Nothing is posted, liked or removed until you switch
+  the relevant mode to live.
+- Earlier live tests of this source duplicated composer text and the schedule
+  picker's selected instant is unverified. Do not use it for unattended posting.
+- Account automation carries a real risk of limits or bans. The product is
+  assistive, not a bot farm. See the automation boundaries in `#98`.
 
 ## Install / auto-update
 
-Open this raw link in a browser that has Tampermonkey installed — Tampermonkey
-will offer to install it, and will auto-update from the same URL afterwards:
+Open the raw link in a browser with Tampermonkey installed:
 
 **[Install / update](src/x-bulk-scheduler.user.js)**
 
-Once installed, new versions are picked up automatically (Tampermonkey checks
-periodically, or use its "Check for userscript updates").
+Tampermonkey will offer to install it and will auto-update from the same URL.
+`main` is the auto-update source, so merging code affects installed users.
+
+## Project
+
+- [Project status](docs/PROJECT-STATUS.md) — what works, what is claimed, top risks
+- [Roadmap](docs/ROADMAP.md) — phases M0–M7 and the module map
+- [Legacy issue queue](docs/ISSUE-QUEUE.md) — historical record, frozen during M0
+- [Functionality test matrix](docs/FUNCTIONALITY-TESTS.md) — historical tests
+
+Work is tracked on the **X Scheduler Rebuild** project board. New issues use
+`type:` / `area:` / `prio:` / `status:` / `size:` labels and an M0–M7 milestone.

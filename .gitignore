@@ -1,14 +1,17 @@
-# Publish ONLY the userscript. Keep private notes/strategy off GitHub.
-BUGS.md
-PROJECT.md
-ROADMAP.md
-SETUP.md
-TESTING.md
-DESKTOP-TESTING.md
-xbs-*.json
+# Private notes stay local. Patterns are anchored to the repository root so
+# they do not swallow documentation inside subdirectories.
+/BUGS.md
+/PROJECT.md
+/ROADMAP.md
+/SETUP.md
+/TESTING.md
+/DESKTOP-TESTING.md
+/xbs-*.json
 *.log
+
 # Local test harness stays off GitHub (the published userscript carries the same
-# selfTest() as its "Self-Test" button; the node runner is just my dev tool).
-test/
-# Never publish the MCP config — it points at a token env var, keep it local.
-.mcp.json
+# selfTest() as its "Self-Test" button; the node runner is a dev tool).
+/test/
+
+# Never publish the MCP config: it points at a token env var.
+/.mcp.json
