@@ -27,6 +27,17 @@ Open the raw link in a browser with Tampermonkey installed:
 Tampermonkey will offer to install it and will auto-update from the same URL.
 `main` is the auto-update source, so merging code affects installed users.
 
+## Development
+
+```sh
+npm run check   # syntax-check the userscript
+npm test        # unit + contract tests
+npm run verify  # both, as CI runs them
+```
+
+No install step and no dependencies. CI runs `npm run verify` on every pull
+request.
+
 ## Project
 
 - [Project status](docs/PROJECT-STATUS.md) — what works, what is claimed, top risks

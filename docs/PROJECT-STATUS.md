@@ -13,9 +13,9 @@ and the legacy issue queue remain as history, not as the current plan.
 |---|---|---|
 | Product shape | Single Tampermonkey userscript, 2,024 lines / 117 KB | `src/x-bulk-scheduler.user.js` |
 | Build | None. File is served raw and auto-updated by Tampermonkey | Userscript header |
-| Unit tests | 1 file, 2 tests, passing; tests a model not wired into the product | `node --test tests/legacy-review.model.test.js` |
-| Documented test command | Broken on Node 24 (`node --test tests/` → `MODULE_NOT_FOUND`) | Reproduced locally |
-| CI | None | No `.github/workflows` |
+| Unit tests | 7 tests passing: 2 model tests + 5 userscript contract tests | `npm test` |
+| Test command | Works on Node 20+ (`node --test` auto-discovers) | `npm run verify` |
+| CI | GitHub Actions `verify` job on every PR | `.github/workflows/ci.yml` |
 | Release | No tags, no changelog, no artifacts | `gh release list` empty |
 | License | None | No `LICENSE` |
 | Backlog | 60 legacy issues, 16 draft PRs, all against one file | GitHub |
