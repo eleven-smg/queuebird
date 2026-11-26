@@ -1,6 +1,6 @@
 # Project status
 
-**Snapshot:** 2026-11-25 · `main` at `692cdb6` · repository `eleven-smg/queuebird` (renamed from `x-bulk-scheduler`)
+**Snapshot:** 2026-11-26 · `main` at `e46752c` · repository `eleven-smg/queuebird` (renamed from `x-bulk-scheduler`)
 
 This document is the maintainer view. It is deliberately short. The test matrix
 and the legacy issue queue remain as history, not as the current plan.
@@ -11,7 +11,7 @@ and the legacy issue queue remain as history, not as the current plan.
 
 | Area | State | Evidence |
 |---|---|---|
-| Product shape | Single Tampermonkey userscript, 2,024 lines / 117 KB | `src/x-bulk-scheduler.user.js` |
+| Product shape | Single Tampermonkey userscript, 2,125 lines / 117 KB | `src/x-bulk-scheduler.user.js` |
 | Build | None. File is served raw and auto-updated by Tampermonkey | Userscript header |
 | Unit tests | 7 tests passing: 2 model tests + 5 userscript contract tests | `npm test` |
 | Test command | Works on Node 20+ (`node --test` auto-discovers) | `npm run verify` |
@@ -19,7 +19,7 @@ and the legacy issue queue remain as history, not as the current plan.
 | Release | No tags, no changelog, no artifacts | `gh release list` empty |
 | License | None | No `LICENSE` |
 | Backlog | 60 legacy issues, 16 draft PRs, all against one file | GitHub |
-| Board | Created: *X Scheduler Rebuild* (project #1), 76 items | GitHub Projects |
+| Board | Created: *Queuebird* (project #1), 78 items | GitHub Projects |
 | Labels | 29 labels: type / area / priority / status / size | GitHub |
 | Milestones | M0–M7 | GitHub |
 
