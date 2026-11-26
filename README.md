@@ -51,6 +51,7 @@ request.
 
 ## Project
 
+- [Feature inventory](docs/FEATURE-INVENTORY.md) - every shipped, experimental and planned capability
 - [Project status](docs/PROJECT-STATUS.md) - what works, what is claimed, top risks
 - [Roadmap](docs/ROADMAP.md) - phases M0-M7 and the module map
 - [Dashboard IA](docs/DASHBOARD-IA.md) - workspaces and navigation
@@ -58,5 +59,5 @@ request.
 - [Legacy issue queue](docs/ISSUE-QUEUE.md) - historical record, frozen during M0
 - [Functionality test matrix](docs/FUNCTIONALITY-TESTS.md) - historical tests
 
-Work is tracked on the **X Scheduler Rebuild** project board. New issues use
+Work is tracked on the **Queuebird** project board. New issues use
 `type:` / `area:` / `prio:` / `status:` / `size:` labels and an M0-M7 milestone.
