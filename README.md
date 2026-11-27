@@ -61,3 +61,18 @@ request.
 
 Work is tracked on the **Queuebird** project board. New issues use
 `type:` / `area:` / `prio:` / `status:` / `size:` labels and an M0-M7 milestone.
+
+## Contributing
+
+Queuebird is open to anyone. You do **not** need an application, an invitation
+or an assignment. Pick an issue labelled `status: ready` or `good first issue`,
+comment `/claim`, fork the repository and open a pull request. A maintainer
+reviews every PR; `verify` must be green.
+
+- [Contributing guide](CONTRIBUTING.md) - setup, branch names, tests, review rules
+- [Parallel work lanes](docs/WORK-LANES.md) - who is working on what, and the handoff format
+- [Core module contracts](core/README.md) - the pure modules we need next
+- [Code of conduct](CODE_OF_CONDUCT.md)
+
+Good first tasks: **#58** (URL parser), **#89** (release docs). Larger:
+**#88** (test harness), **#92** (availability), **#91** (storage v2).

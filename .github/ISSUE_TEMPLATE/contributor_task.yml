@@ -1,0 +1,93 @@
+name: Contributor task
+description: A scoped piece of work that someone can claim and finish in one PR.
+title: "[TASK] "
+labels:
+  - "type: chore"
+  - "help wanted"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when you want to propose a task, or when the maintainer is
+        splitting a large issue. A good task names the files, the acceptance
+        check and the tests. Do not include credentials or private posts.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One or two sentences. What is true when this is done?
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Files or modules
+      description: New files you expect to create. If this edits the single-file userscript, say why.
+      placeholder: |
+        core/example.js
+        tests/example.test.js
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Checkable statements. Copy these into the PR.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: tests
+    attributes:
+      label: Tests
+      description: The cases that must be covered, including the failure case.
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Other issues, modules or decisions that must land first.
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      options:
+        - "s — under half a day"
+        - "m — 1 to 2 days"
+        - "l — 3 to 5 days"
+        - "xl — split before starting"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Suggested lane
+      description: Coordination only. Anyone can claim the task.
+      options:
+        - "External contributor"
+        - "Terminal AI lane"
+        - "Browser AI lane"
+        - "Maintainer"
+        - "Unassigned"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: This does not change the dry-run default, the namespace, the filename or the update URLs.
+          required: true
+        - label: This can be tested without live X, or the live check is explicitly described.
+          required: true

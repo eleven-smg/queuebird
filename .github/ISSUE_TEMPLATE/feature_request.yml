@@ -1,0 +1,76 @@
+name: Feature request
+description: Propose a capability or a change in behaviour.
+title: "[FEATURE] "
+labels:
+  - "type: feature"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check `docs/FEATURE-INVENTORY.md` first. Many ideas already exist as
+        planned issues. A feature is not accepted until it has a workspace, a
+        safety impact and an acceptance check.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is hard or impossible today? Describe the situation, not the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: What should the tool do? Include the main action and what stays manual.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Workspace
+      options:
+        - Accounts
+        - Sources
+        - Library
+        - Plan
+        - Publish
+        - Cleanup
+        - Settings
+        - Platform / infrastructure
+    validations:
+      required: true
+
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety impact
+      description: Does this post, like, remove, store credentials or act without a human? What are the caps and the dry-run behaviour?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance check
+      description: How will we know it works? A command, a test, or a recorded manual check.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing issues, manual workarounds, or a smaller version.
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: I checked the feature inventory and this is not already tracked.
+          required: true
+        - label: This does not require account creation, mass actions, stealth or credential storage.
+          required: true
