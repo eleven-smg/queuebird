@@ -1,0 +1,94 @@
+name: Bug report
+description: Something in the userscript, dashboard or tests is wrong.
+title: "[BUG] "
+labels:
+  - "type: bug"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include cookies, tokens, passwords, private posts or account data.
+        If the problem involves a live X action, stop and describe it instead of
+        repeating it.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The actual behaviour, including any error text.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Userscript version, branch or commit SHA.
+      placeholder: "0.13.1 / main @ e46752c"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Desktop Chrome / Edge
+        - Desktop Firefox
+        - Firefox Android + Tampermonkey
+        - MV3 extension prototype
+        - Node tests only
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console or log output
+      description: Redact handles, IDs and anything private if needed.
+      render: text
+
+  - type: dropdown
+    id: live-x
+    attributes:
+      label: Did this involve a live X action?
+      options:
+        - "No — read-only or local only"
+        - "Yes — a post, like, bookmark or delete was attempted"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or evidence
+      description: Drag images here. Remove private content first.
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: I removed credentials, cookies, tokens and private posts from this report.
+          required: true
+        - label: I read the safety policy and did not repeat a risky live action to capture this report.
+          required: true

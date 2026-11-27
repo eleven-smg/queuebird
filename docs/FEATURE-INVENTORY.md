@@ -288,7 +288,12 @@ bans; the caps reduce risk, they do not remove it.
 
 ---
 
-## 13. Assignment guide
+## 13. Work lanes and assignment guide
+
+These lanes are **coordination, not permission**. Anyone can claim any
+`status: ready` issue by commenting `/claim`; you do not need an assignment or an
+application. See [`CONTRIBUTING.md`](../CONTRIBUTING.md) and
+[`docs/WORK-LANES.md`](WORK-LANES.md).
 
 Work is split by what can be verified without the owner’s live X account.
 
