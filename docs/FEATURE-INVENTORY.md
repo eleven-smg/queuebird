@@ -225,7 +225,7 @@ confirmation panel.
 | Core extraction | Pure `core/` modules with no DOM or GM globals | Planned | #90 |
 | Storage v2 | Revision-safe, multi-tab, multi-account writes | Module ready | `core/storage.js` (#112); multi-tab and multi-account pending |
 | Queue identity | Alias-based dedupe, merge with conflicts, per-account keys | Module ready | `core/queue.js`, 15 tests (#115) |
-| Plan builder | Spacing, daily cap, reservations, local-day boundary | In progress | #120 |
+| Plan builder | Spacing, daily cap, reservations, local-day boundary | Module ready | `core/plan.js`, 12 tests (#122); wall-clock windows pending (#123) |
 | Availability module | Pure state machine with provider evidence | Module ready | `core/availability.js`, 8 tests (#110) |
 | Build step | Bundle `core/` + adapters into the userscript artifact | Planned | #103 |
 | MV3 extension | Desktop shell with dashboard | Planned | #104 |

@@ -18,6 +18,8 @@ No release tags exist yet. Until the first tag is created with the procedure in
   are rejected, malformed records are preserved, migrate is idempotent (#112).
 - Queue identity module (`core/queue.js`) with 15 tests: alias-based dedupe,
   non-mutating merge with conflicts, per-account scope keys (#115).
+- Plan builder (`core/plan.js`) with 12 tests: future-only spacing, daily cap
+  per local day, reservations and conflict reporting (#122).
 - Synthetic fixtures for availability, queue and harvest parsing, a shared
   fixture loader and 33 fixture-driven tests (#117).
 - Userscript contract tests for the metadata block, update URLs, compilation and
