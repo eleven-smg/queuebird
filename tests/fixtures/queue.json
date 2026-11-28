@@ -1,0 +1,120 @@
+{
+  "dedupe": [
+    {
+      "name": "exact duplicate keeps first occurrence",
+      "items": [
+        { "statusId": "1", "text": "one" },
+        { "statusId": "2", "text": "two" },
+        { "statusId": "1", "text": "one" },
+        { "statusId": "3", "text": "three" },
+        { "statusId": "2", "text": "two" }
+      ],
+      "expected": ["1", "2", "3"]
+    },
+    {
+      "name": "wrapper and original are one post",
+      "items": [
+        { "statusId": "11", "wrapperStatusId": "10", "text": "wrapper" },
+        { "statusId": "10", "text": "original" }
+      ],
+      "expected": ["11"]
+    },
+    {
+      "name": "malformed item retained in place",
+      "items": [
+        { "statusId": "1", "text": "one" },
+        { "text": "no alias" },
+        null,
+        "not-an-item",
+        { "statusId": "1", "originalStatusId": "1" }
+      ],
+      "expected": ["1", null, null, null]
+    },
+    {
+      "name": "repeated malformed items are not dropped",
+      "items": [
+        { "text": "no alias" },
+        { "text": "no alias" }
+      ],
+      "expected": [null, null]
+    }
+  ],
+  "merge": [
+    {
+      "name": "merge unions local and remote without duplicates",
+      "local": [
+        { "statusId": "1", "text": "one" },
+        { "statusId": "2", "text": "two" }
+      ],
+      "remote": [
+        { "statusId": "2", "text": "two" },
+        { "statusId": "3", "text": "three" },
+        { "statusId": "1", "text": "one" }
+      ],
+      "expected": { "items": ["1", "2", "3"], "conflicts": [] }
+    },
+    {
+      "name": "divergent record keeps local",
+      "local": [
+        { "statusId": "1", "text": "local" }
+      ],
+      "remote": [
+        { "statusId": "1", "text": "remote" }
+      ],
+      "expected": { "items": ["1"], "conflicts": ["divergent-record"] }
+    },
+    {
+      "name": "malformed records are retained and reported",
+      "local": [
+        { "statusId": "1", "text": "one" },
+        { "text": "bad local" }
+      ],
+      "remote": [
+        { "statusId": "1", "text": "one" },
+        { "text": "bad remote" },
+        42
+      ],
+      "expected": {
+        "items": ["1", null, null, null],
+        "conflicts": ["malformed-record", "malformed-record", "malformed-record"]
+      }
+    },
+    {
+      "name": "identical records collapse regardless of key order",
+      "local": [
+        {
+          "statusId": "1",
+          "text": "hello",
+          "media": { "width": 10, "height": 20 }
+        }
+      ],
+      "remote": [
+        {
+          "media": { "height": 20, "width": 10 },
+          "text": "hello",
+          "statusId": "1"
+        }
+      ],
+      "expected": { "items": ["1"], "conflicts": [] }
+    },
+    {
+      "name": "divergence through a wrapper alias keeps local",
+      "local": [
+        { "statusId": "1", "text": "local" }
+      ],
+      "remote": [
+        { "wrapperStatusId": "1", "text": "remote" }
+      ],
+      "expected": { "items": ["1"], "conflicts": ["divergent-record"] }
+    },
+    {
+      "name": "duplicate local posts collapse to first occurrence",
+      "local": [
+        { "statusId": "1", "text": "first" },
+        { "statusId": "1", "text": "second" }
+      ],
+      "remote": [],
+      "expected": { "items": ["1"], "conflicts": [] }
+    }
+  ]
+}

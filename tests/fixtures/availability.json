@@ -1,0 +1,197 @@
+[
+  {
+    "name": "media present wins over deleted wording",
+    "observation": {
+      "media": true,
+      "tombstone": false,
+      "text": "this post was deleted",
+      "httpStatus": null,
+      "provider": "dom",
+      "statusId": "1001"
+    },
+    "expected": "available"
+  },
+  {
+    "name": "structural tombstone with no media is unavailable",
+    "observation": {
+      "media": false,
+      "tombstone": true,
+      "text": "",
+      "httpStatus": null,
+      "provider": "dom",
+      "statusId": "1002"
+    },
+    "expected": "unavailable"
+  },
+  {
+    "name": "deletion wording in text alone stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "This post is unavailable because it no longer exists.",
+      "httpStatus": 200,
+      "provider": "dom",
+      "statusId": "1003"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "public lookup 404 stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 404,
+      "provider": "syndication",
+      "statusId": "1004"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "timeout or missing response stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": null,
+      "provider": "oembed",
+      "statusId": "1005"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "missing fields stay unknown",
+    "observation": {},
+    "expected": "unknown"
+  },
+  {
+    "name": "invalid input stays unknown",
+    "observation": null,
+    "expected": "unknown"
+  },
+  {
+    "name": "401 restricted lookup stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 401,
+      "provider": "oembed",
+      "statusId": "1008"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "403 restricted lookup stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 403,
+      "provider": "oembed",
+      "statusId": "1009"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "429 rate limit stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 429,
+      "provider": "oembed",
+      "statusId": "1010"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "500 server error stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 500,
+      "provider": "syndication",
+      "statusId": "1011"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "503 server error stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 503,
+      "provider": "syndication",
+      "statusId": "1012"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "network error 0 stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 0,
+      "provider": "oembed",
+      "statusId": "1013"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "successful lookup without media is not proof",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": 200,
+      "provider": "syndication",
+      "statusId": "1014"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "invalid http status stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "",
+      "httpStatus": "404",
+      "provider": "manual",
+      "statusId": "1015"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "media wins over a structural tombstone",
+    "observation": {
+      "media": true,
+      "tombstone": true,
+      "text": "this post was deleted",
+      "httpStatus": null,
+      "provider": "dom",
+      "statusId": "1016"
+    },
+    "expected": "available"
+  },
+  {
+    "name": "metadata without a decision field stays unknown",
+    "observation": {
+      "provider": "dom",
+      "statusId": "1017"
+    },
+    "expected": "unknown"
+  },
+  {
+    "name": "benign text without a lookup stays unknown",
+    "observation": {
+      "media": false,
+      "tombstone": false,
+      "text": "lorem ipsum dolor sit amet"
+    },
+    "expected": "unknown"
+  }
+]
