@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Queuebird shell prototype</title>
+  <link rel="stylesheet" href="shell.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="app-header">
+    <div class="brand-block">
+      <h1 class="brand">Queuebird</h1>
+      <p class="brand-note">Static shell prototype · synthetic data only</p>
+    </div>
+
+    <dl class="status-strip" aria-label="Session status">
+      <div class="status-item" data-status="account">
+        <dt>Account</dt>
+        <dd><span class="profile-chip">@example</span></dd>
+      </div>
+      <div class="status-item" data-status="dry-run">
+        <dt>Dry-run</dt>
+        <dd><span class="state state-on">on</span></dd>
+      </div>
+      <div class="status-item" data-status="queue">
+        <dt>Queued</dt>
+        <dd><span class="count">12</span></dd>
+      </div>
+      <div class="status-item" data-status="next-slot">
+        <dt>Next slot</dt>
+        <dd><time datetime="2026-11-28T18:30">Today, 18:30</time></dd>
+      </div>
+    </dl>
+  </header>
+
+  <div class="layout">
+    <nav class="rail" aria-label="Workspaces">
+      <p class="rail-title">Workspaces</p>
+      <ul>
+        <li><a href="#accounts" data-workspace-link aria-current="page">Accounts</a></li>
+        <li><a href="#sources" data-workspace-link>Sources</a></li>
+        <li><a href="#library" data-workspace-link>Library</a></li>
+        <li><a href="#plan" data-workspace-link>Plan</a></li>
+        <li><a href="#publish" data-workspace-link>Publish</a></li>
+        <li><a href="#cleanup" data-workspace-link>Cleanup</a></li>
+        <li><a href="#settings" data-workspace-link>Settings</a></li>
+      </ul>
+    </nav>
+
+    <main id="main" tabindex="-1">
+      <p class="visually-hidden" id="workspace-announcer" role="status" aria-live="polite"></p>
+
+      <section class="workspace" id="accounts" aria-labelledby="accounts-heading">
+        <h2 id="accounts-heading" tabindex="-1">Accounts</h2>
+        <p class="lead">One profile at a time. Inspect the active profile before harvesting or publishing; nothing is changed on load.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Inspect profile</button>
+          <p class="action-note">Primary action. Read-only inspection.</p>
+        </div>
+
+        <ul class="stat-list">
+          <li><span>Warm-up stage</span><strong>Stage 2 of 4</strong></li>
+          <li><span>Risk level</span><strong class="badge badge-unknown">unknown</strong></li>
+          <li><span>Last activity</span><strong>2 hours ago</strong></li>
+          <li><span>Daily cap</span><strong>48 posts</strong></li>
+        </ul>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="control-grid">
+            <label class="field">Warm-up target
+              <input type="number" value="40" min="0" step="5">
+            </label>
+            <label class="field">Daily cap
+              <input type="number" value="48" min="1" max="48" step="1">
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Export profile data</button>
+            <button class="button button-secondary" type="button">Switch profile</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading" tabindex="-1">Sources</h2>
+        <p class="lead">Pick a harvest surface. Harvesting is read-only and paced; duplicates and wrapper links are reported, not hidden.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Run harvest</button>
+          <p class="action-note">Primary action. Read-only collection.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="source-card">
+            <h3>Bookmarks</h3>
+            <p>Saved posts from the active profile.</p>
+          </article>
+          <article class="source-card">
+            <h3>Likes</h3>
+            <p>Opt-in, capped and paced.</p>
+          </article>
+          <article class="source-card">
+            <h3>Search</h3>
+            <p>Synthetic query surface.</p>
+          </article>
+          <article class="source-card">
+            <h3>List</h3>
+            <p>A named list, read-only.</p>
+          </article>
+        </div>
+
+        <ul class="stat-list">
+          <li><span>Items found</span><strong>128</strong></li>
+          <li><span>Duplicates skipped</span><strong>34</strong></li>
+          <li><span>Wrappers unresolved</span><strong>2</strong></li>
+          <li><span>Estimated time</span><strong>6 min</strong></li>
+        </ul>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="control-grid">
+            <label class="field">Depth
+              <select>
+                <option>Recent</option>
+                <option>Deep</option>
+              </select>
+            </label>
+            <label class="field">Fast-forward past collected
+              <input type="number" value="0" min="0" step="1">
+            </label>
+            <label class="field field-inline">
+              <input type="checkbox">
+              Photo mode
+            </label>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace" id="library" aria-labelledby="library-heading">
+        <h2 id="library-heading" tabindex="-1">Library</h2>
+        <p class="lead">Collected posts with their availability and tags. Unknown availability stays unknown until it is verified.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Review and tag</button>
+          <p class="action-note">Primary action. Local edits only.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption>Collected posts (synthetic)</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Thumbnail</span></th>
+                <th scope="col">Author</th>
+                <th scope="col">Post</th>
+                <th scope="col">Media</th>
+                <th scope="col">Availability</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="thumb" aria-hidden="true"></span></td>
+                <td>@maker</td>
+                <td>status 1001</td>
+                <td>video</td>
+                <td><span class="badge badge-available">available</span></td>
+                <td>desk, light</td>
+                <td>unused</td>
+              </tr>
+              <tr>
+                <td><span class="thumb" aria-hidden="true"></span></td>
+                <td>@studio</td>
+                <td>status 1002</td>
+                <td>photo</td>
+                <td><span class="badge badge-unavailable">unavailable</span></td>
+                <td>parked</td>
+                <td>unused</td>
+              </tr>
+              <tr>
+                <td><span class="thumb" aria-hidden="true"></span></td>
+                <td>@archive</td>
+                <td>status 1003</td>
+                <td>video</td>
+                <td><span class="badge badge-unknown">unknown</span></td>
+                <td>queue</td>
+                <td>used</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="control-grid">
+            <label class="field">Availability
+              <select>
+                <option>All</option>
+                <option>Available</option>
+                <option>Unavailable</option>
+                <option>Unknown</option>
+              </select>
+            </label>
+            <label class="field">Media
+              <select>
+                <option>All</option>
+                <option>Video</option>
+                <option>Photo</option>
+              </select>
+            </label>
+            <label class="field">Source
+              <select>
+                <option>All</option>
+                <option>Bookmarks</option>
+                <option>Likes</option>
+                <option>Search</option>
+                <option>List</option>
+              </select>
+            </label>
+            <label class="field">Used state
+              <select>
+                <option>All</option>
+                <option>Used</option>
+                <option>Unused</option>
+              </select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Edit captions</button>
+            <button class="button button-secondary" type="button">Move to queue</button>
+            <button class="button button-secondary" type="button">Bulk remove</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace" id="plan" aria-labelledby="plan-heading">
+        <h2 id="plan-heading" tabindex="-1">Plan</h2>
+        <p class="lead">A preview schedule, not a commitment. Every plan change invalidates the preview and says so.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Build preview</button>
+          <p class="action-note">Primary action. Local only, no scheduling.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption>Preview schedule (synthetic)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Time</th>
+                <th scope="col">Post</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Today</td>
+                <td>18:30</td>
+                <td>status 1001</td>
+                <td><span class="badge badge-preview">previewed</span></td>
+              </tr>
+              <tr>
+                <td>Today</td>
+                <td>21:00</td>
+                <td>status 1003</td>
+                <td><span class="badge badge-preview">previewed</span></td>
+              </tr>
+              <tr>
+                <td>Tomorrow</td>
+                <td>09:15</td>
+                <td>status 1005</td>
+                <td><span class="badge badge-unknown">unknown</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">Changing any option below clears this preview until it is rebuilt.</p>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="control-grid">
+            <label class="field">Preset
+              <select>
+                <option>Evening</option>
+                <option>Morning</option>
+                <option>Custom</option>
+              </select>
+            </label>
+            <label class="field">Start time
+              <input type="time" value="18:30">
+            </label>
+            <label class="field">Gap (minutes)
+              <input type="number" value="150" min="15" step="15">
+            </label>
+            <label class="field">Daily cap
+              <input type="number" value="48" min="1" max="48" step="1">
+            </label>
+            <label class="field">Timezone
+              <select>
+                <option>UTC</option>
+                <option>Local</option>
+              </select>
+            </label>
+          </div>
+          <fieldset>
+            <legend>Shuffle</legend>
+            <div class="control-grid">
+              <label class="choice"><input type="radio" name="shuffle" checked> Free shuffle</label>
+              <label class="choice"><input type="radio" name="shuffle"> Spread shuffle</label>
+            </div>
+          </fieldset>
+        </details>
+      </section>
+
+      <section class="workspace" id="publish" aria-labelledby="publish-heading">
+        <h2 id="publish-heading" tabindex="-1">Publish</h2>
+        <p class="lead">Dry-run by default. Live mode is a separate, explicit decision with an in-page confirmation panel.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Start dry run</button>
+          <p class="action-note">Primary action. No account mutation.</p>
+        </div>
+
+        <article class="preview-card" aria-labelledby="publish-preview-heading">
+          <div class="preview-head">
+            <h3 id="publish-preview-heading">Next post preview</h3>
+            <span class="badge badge-preview">previewed</span>
+          </div>
+          <p class="preview-meta"><span class="profile-chip">@example</span> · Today, 18:30</p>
+          <p class="preview-body">A synthetic caption for the next queued post.</p>
+          <p class="preview-link">status 1001 · video · available</p>
+        </article>
+
+        <ul class="outcome-list">
+          <li><span class="badge badge-scheduled">scheduled</span> status 1001 · no errors</li>
+          <li><span class="badge badge-unknown">skipped</span> status 1002 · unavailable media</li>
+          <li><span class="badge badge-unavailable">failed</span> status 1004 · synthetic rate limit</li>
+        </ul>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <fieldset>
+            <legend>Live mode</legend>
+            <label class="choice"><input type="checkbox"> Enable live mode</label>
+            <p class="note">Live mode needs the in-page confirmation panel. This prototype does not perform any action.</p>
+          </fieldset>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Stop run</button>
+            <button class="button button-secondary" type="button">Clear outcomes</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace" id="cleanup" aria-labelledby="cleanup-heading">
+        <h2 id="cleanup-heading" tabindex="-1">Cleanup</h2>
+        <p class="lead">Scan first, preview affected items, then confirm. Unknown items are never removed automatically.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Scan (dry run)</button>
+          <p class="action-note">Primary action. No deletions.</p>
+        </div>
+
+        <p class="note">This prototype has no destructive action wired. The rules below are static examples.</p>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <fieldset>
+            <legend>Rules</legend>
+            <div class="control-grid">
+              <label class="choice"><input type="radio" name="cleanup-rule" checked> All collected</label>
+              <label class="choice"><input type="radio" name="cleanup-rule"> First 25</label>
+              <label class="choice"><input type="radio" name="cleanup-rule"> Past week</label>
+              <label class="choice"><input type="radio" name="cleanup-rule"> Confirmed dead</label>
+              <label class="choice"><input type="radio" name="cleanup-rule"> Live media only</label>
+            </div>
+          </fieldset>
+          <div class="control-grid">
+            <label class="field">Retention window (days)
+              <input type="number" value="30" min="1" step="1">
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Preview affected items</button>
+            <button class="button button-secondary" type="button">Unlike</button>
+            <button class="button button-secondary" type="button">Unbookmark</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace" id="settings" aria-labelledby="settings-heading">
+        <h2 id="settings-heading" tabindex="-1">Settings</h2>
+        <p class="lead">Global preferences. Dry-run is the default and stays on until a person turns it off explicitly.</p>
+
+        <div class="primary-action">
+          <button class="button button-primary" type="button">Toggle dry run</button>
+          <p class="action-note">Primary action. Currently on.</p>
+        </div>
+
+        <ul class="stat-list">
+          <li><span>Version</span><strong>0.13.1</strong></li>
+          <li><span>Channel</span><strong>prototype</strong></li>
+          <li><span>Timezone</span><strong>UTC</strong></li>
+          <li><span>Self-test</span><strong class="badge badge-unknown">unknown</strong></li>
+        </ul>
+
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="control-grid">
+            <label class="field">Timezone
+              <select>
+                <option>UTC</option>
+                <option>Local</option>
+              </select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Import settings</button>
+            <button class="button button-secondary" type="button">Export settings</button>
+            <button class="button button-secondary" type="button">Run diagnostics</button>
+            <button class="button button-secondary" type="button">Run self-test</button>
+            <button class="button button-secondary" type="button">Probe environment</button>
+          </div>
+          <h3 class="subheading">Log viewer</h3>
+          <ul class="log-list">
+            <li>12:04 dry run previewed 3 posts</li>
+            <li>12:02 harvest found 128 items</li>
+            <li>11:58 workspace shell loaded</li>
+          </ul>
+          <div class="button-row">
+            <button class="button button-secondary" type="button">Copy log</button>
+            <button class="button button-secondary" type="button">Download log</button>
+          </div>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <script src="shell.js"></script>
+</body>
+</html>
