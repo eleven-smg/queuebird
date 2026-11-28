@@ -25,9 +25,9 @@ anyone can claim any `status: ready` issue.
 | Lane | Who | Issue | Branch | Files owned | State |
 |---|---|---|---|---|---|
 | **O** | OpenCode (this session) | contribution kit, integration, review | `docs/open-contribution` | `CONTRIBUTING.md`, `.github/`, `core/README.md`, `src/x-bulk-scheduler.user.js` | active |
-| **T** | Terminal OpenCode, DeepSeek free | #120 plan builder | `feat/120-plan-terminal` | `core/plan.js`, `tests/plan.test.js` | claimed |
+| **T** | Terminal OpenCode, DeepSeek free | #93 dashboard shell prototype | `feat/93-shell-terminal` | `docs/prototype/`, `tests/prototype.test.js` | claimed |
 | **B** | Browser AI | #58 malformed video URLs | `feat/58-url-validation-browser` | `core/url.js`, `tests/url.test.js` | ready |
-| **X** | External contributors | #93, #104, #106 groups | per issue | per issue | open |
+| **X** | External contributors | #104, #106 groups, #123 | per issue | per issue | open |
 
 Lane O owns integration and review. It does not take a second code module while
 reviewing. Lanes T and B are deliberately disjoint: availability and URL parsing
@@ -46,18 +46,18 @@ Read first:
 - docs/FEATURE-INVENTORY.md (sections 4 and 11)
 - docs/SAFETY-POLICY.md
 
-Your issue: #120 [CORE] Plan builder: pure slot allocation
-Your branch: feat/120-plan-terminal
-You own only: core/plan.js and tests/plan.test.js
+Your issue: #93 [DASH] Dashboard shell - phase 1: static prototype
+Your branch: feat/93-shell-terminal
+You own only: docs/prototype/shell.html, docs/prototype/shell.css,
+docs/prototype/shell.js, docs/prototype/README.md, tests/prototype.test.js
 
-Implement buildPlan({ items, settings, now, reservations }) exactly as specified
-in core/README.md: future-only spacing-based slots, a daily cap per local day in
-settings.timezone, reservations that block their minute and count toward the cap,
-unavailable excluded, unknown kept, malformed items and invalid settings reported
-as conflicts, never thrown.
+Build a dependency-free prototype of the seven-workspace shell from
+docs/DASHBOARD-IA.md: status strip, keyboard-navigable nav, one primary action
+per workspace, Advanced panels, no prompt/alert/confirm, no inline styles, one
+stylesheet with tokens and focus-visible, responsive at 360 and 1440 px.
 
-Do not edit src/, core/README.md, existing modules or tests, package.json,
-.github/ or docs. Do not add dependencies. Do not claim live-X verification.
+Do not edit src/, core/, docs/DASHBOARD-IA.md, package.json, .github/ or
+existing tests. Do not add dependencies. Do not claim browser or axe checks.
 
 Run: npm run verify
 Commit locally only. Do not push, do not open a PR, do not use gh. Report the
@@ -130,5 +130,5 @@ PR merges or the claim is released.
 
 | Issue | Lane | Claimed | Branch / PR | Notes |
 |---|---|---|---|---|
-| #120 | T | 2026-11-28 | `feat/120-plan-terminal` | plan builder phase 1 |
+| #93 | T | 2026-11-28 | `feat/93-shell-terminal` | phase 1: static shell prototype |
 | #58 | B | 2026-11-27 | `feat/58-url-validation-browser` | URL parser |
