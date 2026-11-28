@@ -35,7 +35,7 @@ Documentation alone never closes a behaviour issue.
 | Storage | Tampermonkey `GM_setValue` / `GM_getValue`, per browser profile | Shipped |
 | Test suite | 7 Node tests (`npm test`) + 43 in-panel self-tests | Shipped |
 | CI | GitHub Actions `verify` on every PR; branch protection on `main` | Shipped |
-| Release | No tags, no changelog, no artifacts, no license | Planned (#89) / decision |
+| Release | Changelog, MIT license, release procedure; no tags or artifacts yet | Partial (#89) | #113, #119 |
 
 The userscript filename and `@namespace` are intentionally unchanged so installed
 copies keep auto-updating.
@@ -225,6 +225,7 @@ confirmation panel.
 | Core extraction | Pure `core/` modules with no DOM or GM globals | Planned | #90 |
 | Storage v2 | Revision-safe, multi-tab, multi-account writes | Module ready | `core/storage.js` (#112); multi-tab and multi-account pending |
 | Queue identity | Alias-based dedupe, merge with conflicts, per-account keys | Module ready | `core/queue.js`, 15 tests (#115) |
+| Plan builder | Spacing, daily cap, reservations, local-day boundary | In progress | #120 |
 | Availability module | Pure state machine with provider evidence | Module ready | `core/availability.js`, 8 tests (#110) |
 | Build step | Bundle `core/` + adapters into the userscript artifact | Planned | #103 |
 | MV3 extension | Desktop shell with dashboard | Planned | #104 |
