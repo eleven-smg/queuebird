@@ -25,7 +25,7 @@ anyone can claim any `status: ready` issue.
 | Lane | Who | Issue | Branch | Files owned | State |
 |---|---|---|---|---|---|
 | **O** | OpenCode (this session) | contribution kit, integration, review | `docs/open-contribution` | `CONTRIBUTING.md`, `.github/`, `core/README.md`, `src/x-bulk-scheduler.user.js` | active |
-| **T** | Terminal OpenCode, DeepSeek free | #89 changelog + release docs | `feat/89-release-terminal` | `CHANGELOG.md`, `docs/RELEASING.md`, `tests/changelog.test.js` | claimed |
+| **T** | Terminal OpenCode, DeepSeek free | #120 plan builder | `feat/120-plan-terminal` | `core/plan.js`, `tests/plan.test.js` | claimed |
 | **B** | Browser AI | #58 malformed video URLs | `feat/58-url-validation-browser` | `core/url.js`, `tests/url.test.js` | ready |
 | **X** | External contributors | #93, #104, #106 groups | per issue | per issue | open |
 
@@ -46,16 +46,18 @@ Read first:
 - docs/FEATURE-INVENTORY.md (sections 4 and 11)
 - docs/SAFETY-POLICY.md
 
-Your issue: #89 [INFRA] Versioning, changelog and releases - phase 1: docs + sync test
-Your branch: feat/89-release-terminal
-You own only: CHANGELOG.md, docs/RELEASING.md, tests/changelog.test.js
+Your issue: #120 [CORE] Plan builder: pure slot allocation
+Your branch: feat/120-plan-terminal
+You own only: core/plan.js and tests/plan.test.js
 
-Write a Keep a Changelog file seeded from the real merged history, a release
-procedure (SemVer, version sync, tags, channels, rollback), and a test that keeps
-the changelog heading and both version fields in sync. Do not create tags,
-releases or branches. Do not edit package.json, src/, core/ or existing tests.
+Implement buildPlan({ items, settings, now, reservations }) exactly as specified
+in core/README.md: future-only spacing-based slots, a daily cap per local day in
+settings.timezone, reservations that block their minute and count toward the cap,
+unavailable excluded, unknown kept, malformed items and invalid settings reported
+as conflicts, never thrown.
 
-Do not add dependencies. Do not claim live-X verification.
+Do not edit src/, core/README.md, existing modules or tests, package.json,
+.github/ or docs. Do not add dependencies. Do not claim live-X verification.
 
 Run: npm run verify
 Commit locally only. Do not push, do not open a PR, do not use gh. Report the
@@ -128,5 +130,5 @@ PR merges or the claim is released.
 
 | Issue | Lane | Claimed | Branch / PR | Notes |
 |---|---|---|---|---|
-| #89 | T | 2026-11-28 | `feat/89-release-terminal` | changelog + release docs |
+| #120 | T | 2026-11-28 | `feat/120-plan-terminal` | plan builder phase 1 |
 | #58 | B | 2026-11-27 | `feat/58-url-validation-browser` | URL parser |
