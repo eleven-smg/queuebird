@@ -52,8 +52,10 @@ cookies or tokens.
    `core/README.md`.
 4. Run `npm test` (or the one fixture file) and confirm the new case passes.
 
-If a fixture disagrees with a merged module, fix the fixture rather than the
-module, and report the disagreement.
+If a fixture disagrees with a merged module, stop and decide which one is wrong.
+The fixture encodes the contract in `core/README.md`, so a disagreement usually
+means either the fixture is wrong or the module has a bug. Fix the correct side
+and report the decision in the pull request; never weaken a test to make it pass.
 
 ## What these tests do not cover
 
