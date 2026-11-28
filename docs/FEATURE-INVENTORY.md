@@ -13,6 +13,7 @@ This is the baseline for the next feature list. It is a map, not a promise.
 | **Shipped, unverified** | Code is in `main`, but the only evidence is source, mock or synthetic data. A live check is an open issue. |
 | **Experimental** | Code exists in the `0.13.1-test.4`–`.10` packages, **not in `main`**. Design input, not shipped. |
 | **Planned** | An issue or milestone exists; no product code. |
+| **Module ready** | A pure `core/` module is merged with tests, but it is not yet wired into the userscript. |
 | **Blocked** | Cannot be completed without the owner's X account, device, or a decision. |
 | **Out of scope** | Explicitly excluded by `docs/SAFETY-POLICY.md`. |
 
@@ -105,7 +106,7 @@ posts. Fast-forward makes that cheap; unbookmark-after-post is the permanent fix
 | Clear queue | Drops only `queued` items; keeps scheduled/posted | Shipped | `clearQueued()` |
 | Full reset | Wipes queue and the harvested-ID checkpoint after confirmation | Shipped | `resetHarvest()` |
 | Tags and filters | Tag, filter by availability/media/source/used state | Planned | #92, #93 |
-| Availability state | `available` / `unavailable` / `unknown` per item | Planned | #92 |
+| Availability state | `available` / `unavailable` / `unknown` per item | Module ready | `core/availability.js` (#92, #110); UI wiring pending |
 | Provenance / thumbnails | Show where each item came from and its preview media | Planned | #92, #93 |
 | Post history / retention | Delivered history, retention window, analytics | Planned | #97 |
 
@@ -222,7 +223,7 @@ confirmation panel.
 | Model tests | 2 tests for the legacy review model | Shipped | Not wired into the product |
 | Core extraction | Pure `core/` modules with no DOM or GM globals | Planned | #90 |
 | Storage v2 | Revision-safe, multi-tab, multi-account writes | Planned | #91 |
-| Availability module | Pure state machine with provider evidence | Planned | #92 |
+| Availability module | Pure state machine with provider evidence | Module ready | `core/availability.js`, 8 tests (#110) |
 | Build step | Bundle `core/` + adapters into the userscript artifact | Planned | #103 |
 | MV3 extension | Desktop shell with dashboard | Planned | #104 |
 | Real test harness | Fixtures and browser smoke suite | Planned | #88 |
