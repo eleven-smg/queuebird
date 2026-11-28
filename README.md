@@ -74,5 +74,11 @@ reviews every PR; `verify` must be green.
 - [Core module contracts](core/README.md) - the pure modules we need next
 - [Code of conduct](CODE_OF_CONDUCT.md)
 
-Good first tasks: **#58** (URL parser), **#89** (release docs). Larger:
-**#88** (test harness), **#92** (availability), **#91** (storage v2).
+Good first tasks: **#58** (URL parser), **#89** (release docs), **#88** (test
+harness). Larger: **#91** (storage v2), **#104** (MV3 scaffold).
+
+## License
+
+Queuebird is released under the [MIT License](LICENSE). You may use, modify and
+distribute it, including commercially, as long as the copyright notice and
+permission notice are kept. The software is provided without warranty.

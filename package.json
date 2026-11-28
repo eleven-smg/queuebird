@@ -1,6 +1,7 @@
 {
   "name": "queuebird",
   "version": "0.13.1",
+  "license": "MIT",
   "private": true,
   "description": "Queuebird - Tampermonkey userscript that collects X video links and drives the native scheduler",
   "engines": {
