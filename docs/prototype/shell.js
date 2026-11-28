@@ -52,10 +52,12 @@
   }
 
   function selectWorkspace(id, focusHeading) {
-    activate(id, { focusHeading: focusHeading });
+    // Update the hash first: fragment navigation can move focus to the target,
+    // so focusing the heading before this would be undone.
     if (window.location.hash !== '#' + id) {
       window.location.hash = id;
     }
+    activate(id, { focusHeading: focusHeading });
   }
 
   links.forEach(function (link) {
