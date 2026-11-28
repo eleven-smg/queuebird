@@ -222,7 +222,8 @@ confirmation panel.
 | Contract tests | 5 tests for header, storage keys, panel wiring, dry-run default | Shipped | `tests/userscript-contract.test.js` |
 | Model tests | 2 tests for the legacy review model | Shipped | Not wired into the product |
 | Core extraction | Pure `core/` modules with no DOM or GM globals | Planned | #90 |
-| Storage v2 | Revision-safe, multi-tab, multi-account writes | Module ready | `core/storage.js` (#112); queue merge, multi-tab and multi-account pending |
+| Storage v2 | Revision-safe, multi-tab, multi-account writes | Module ready | `core/storage.js` (#112); multi-tab and multi-account pending |
+| Queue identity | Alias-based dedupe, merge with conflicts, per-account keys | Module ready | `core/queue.js`, 15 tests (#115) |
 | Availability module | Pure state machine with provider evidence | Module ready | `core/availability.js`, 8 tests (#110) |
 | Build step | Bundle `core/` + adapters into the userscript artifact | Planned | #103 |
 | MV3 extension | Desktop shell with dashboard | Planned | #104 |

@@ -25,9 +25,9 @@ anyone can claim any `status: ready` issue.
 | Lane | Who | Issue | Branch | Files owned | State |
 |---|---|---|---|---|---|
 | **O** | OpenCode (this session) | contribution kit, integration, review | `docs/open-contribution` | `CONTRIBUTING.md`, `.github/`, `core/README.md`, `src/x-bulk-scheduler.user.js` | active |
-| **T** | Terminal OpenCode, DeepSeek free | #91 storage v2 (phase 2: `core/queue.js`) | `feat/91-queue-terminal` | `core/queue.js`, `tests/queue.test.js` | claimed |
+| **T** | Terminal OpenCode, DeepSeek free | #88 fixtures + testing docs | `feat/88-fixtures-terminal` | `tests/fixtures/`, `tests/helpers/`, `docs/TESTING.md` | claimed |
 | **B** | Browser AI | #58 malformed video URLs | `feat/58-url-validation-browser` | `core/url.js`, `tests/url.test.js` | ready |
-| **X** | External contributors | #88, #89, #93, #104, #106 groups | per issue | per issue | open |
+| **X** | External contributors | #89, #93, #104, #106 groups | per issue | per issue | open |
 
 Lane O owns integration and review. It does not take a second code module while
 reviewing. Lanes T and B are deliberately disjoint: availability and URL parsing
@@ -46,39 +46,18 @@ Read first:
 - docs/FEATURE-INVENTORY.md (sections 4 and 11)
 - docs/SAFETY-POLICY.md
 
-Your issue: #91 [CORE] Queue and storage v2 - phase 2: core/queue.js
-Your branch: feat/91-queue-terminal
-You own only: core/queue.js and tests/queue.test.js
+Your issue: #88 [INFRA] Real test harness - phase 1: fixtures and testing docs
+Your branch: feat/88-fixtures-terminal
+You own only: tests/fixtures/*, tests/helpers/fixtures.js, tests/fixtures.test.js,
+docs/TESTING.md
 
-Implement dedupe(items), merge(local, remote) and scopeKey(base, account)
-exactly as specified in core/README.md.
+Create fixtures for availability, queue and a static harvest page, a small
+fixture loader, one fixture-driven test, and docs/TESTING.md. The fixture test
+runs availability cases through classify, dedupe/merge cases through core/queue,
+and checks that harvest.html contains exactly two unique supported status URLs.
 
-Decisions for this phase:
-- An item is a record with a string statusId, plus optional string
-  originalStatusId and wrapperStatusId. Those three are aliases of one post.
-- dedupe keeps the first occurrence in order and treats any shared alias as a
-  duplicate. Malformed items are retained in place, never dropped.
-- merge keeps local items, appends remote-only items, treats identical records
-  as one, and reports a divergent record as a conflict instead of overwriting.
-  Malformed items from either side are retained and reported as conflicts.
-- scopeKey trims base, trims and lowercases account, strips one leading "@",
-  and returns "base::account". Empty base falls back to "queue"; empty account
-  falls back to "default".
-- Inputs are never mutated.
-
-Required tests:
-1. dedupe removes exact duplicates and keeps order
-2. dedupe treats wrapper, original and status IDs as the same post
-3. dedupe retains malformed items
-4. merge unions local and remote without duplicates
-5. merge keeps local and reports a divergent record as a conflict
-6. merge retains malformed items from both sides and reports them
-7. merge does not mutate either input
-8. scopeKey normalises case and "@", and falls back for empty input
-9. invalid arguments never throw
-
-Do not edit src/x-bulk-scheduler.user.js, package.json, .github/ or any other
-file. Do not add dependencies. Do not claim live-X verification.
+Do not edit existing tests, core/, src/, package.json, .github/ or other docs.
+Do not add dependencies. Do not claim live-X verification.
 
 Run: npm run verify
 Commit locally only. Do not push, do not open a PR, do not use gh. Report the
@@ -124,7 +103,7 @@ claim you ran the tests. Do not include credentials or private posts.
 
 Point them at the issue and `CONTRIBUTING.md`. Do not send a private brief. The
 issue body, acceptance criteria and templates are enough. If they need a
-starting point, suggest #58, #88 or #89.
+starting point, suggest #58 or #89.
 
 ## Rate-limit strategy
 
@@ -151,5 +130,5 @@ PR merges or the claim is released.
 
 | Issue | Lane | Claimed | Branch / PR | Notes |
 |---|---|---|---|---|
-| #91 | T | 2026-11-28 | `feat/91-queue-terminal` | phase 1 merged #112; phase 2 `core/queue.js` |
+| #88 | T | 2026-11-28 | `feat/88-fixtures-terminal` | phase 1: fixtures + testing docs |
 | #58 | B | 2026-11-27 | `feat/58-url-validation-browser` | URL parser |
