@@ -25,7 +25,7 @@ anyone can claim any `status: ready` issue.
 | Lane | Who | Issue | Branch | Files owned | State |
 |---|---|---|---|---|---|
 | **O** | OpenCode (this session) | contribution kit, integration, review | `docs/open-contribution` | `CONTRIBUTING.md`, `.github/`, `core/README.md`, `src/x-bulk-scheduler.user.js` | active |
-| **T** | Terminal OpenCode, DeepSeek free | #91 storage v2 (phase 1: `core/storage.js`) | `feat/91-storage-terminal` | `core/storage.js`, `tests/storage.test.js` | claimed |
+| **T** | Terminal OpenCode, DeepSeek free | #91 storage v2 (phase 2: `core/queue.js`) | `feat/91-queue-terminal` | `core/queue.js`, `tests/queue.test.js` | claimed |
 | **B** | Browser AI | #58 malformed video URLs | `feat/58-url-validation-browser` | `core/url.js`, `tests/url.test.js` | ready |
 | **X** | External contributors | #88, #89, #93, #104, #106 groups | per issue | per issue | open |
 
@@ -46,29 +46,43 @@ Read first:
 - docs/FEATURE-INVENTORY.md (sections 4 and 11)
 - docs/SAFETY-POLICY.md
 
-Your issue: #91 [CORE] Queue and storage v2 - phase 1: core/storage.js
-Your branch: feat/91-storage-terminal
-You own only: core/storage.js and tests/storage.test.js
+Your issue: #91 [CORE] Queue and storage v2 - phase 2: core/queue.js
+Your branch: feat/91-queue-terminal
+You own only: core/queue.js and tests/queue.test.js
 
-Implement createStore(adapter) exactly as specified in core/README.md:
-read, write with expectedRevision, subscribe, migrate. A stale revision must
-be rejected, not applied. Malformed records are preserved, not dropped.
+Implement dedupe(items), merge(local, remote) and scopeKey(base, account)
+exactly as specified in core/README.md.
+
+Decisions for this phase:
+- An item is a record with a string statusId, plus optional string
+  originalStatusId and wrapperStatusId. Those three are aliases of one post.
+- dedupe keeps the first occurrence in order and treats any shared alias as a
+  duplicate. Malformed items are retained in place, never dropped.
+- merge keeps local items, appends remote-only items, treats identical records
+  as one, and reports a divergent record as a conflict instead of overwriting.
+  Malformed items from either side are retained and reported as conflicts.
+- scopeKey trims base, trims and lowercases account, strips one leading "@",
+  and returns "base::account". Empty base falls back to "queue"; empty account
+  falls back to "default".
+- Inputs are never mutated.
 
 Required tests:
-1. read returns { ok, value, revision, reason }
-2. write with the current revision succeeds and bumps the revision
-3. write with a stale revision is rejected and leaves the value untouched
-4. two stores over one adapter cannot both win a write
-5. subscribe fires on external writes and unsubscribe stops it
-6. migrate is idempotent and reports skipped records
-7. malformed records survive read/migrate without being dropped
+1. dedupe removes exact duplicates and keeps order
+2. dedupe treats wrapper, original and status IDs as the same post
+3. dedupe retains malformed items
+4. merge unions local and remote without duplicates
+5. merge keeps local and reports a divergent record as a conflict
+6. merge retains malformed items from both sides and reports them
+7. merge does not mutate either input
+8. scopeKey normalises case and "@", and falls back for empty input
+9. invalid arguments never throw
 
 Do not edit src/x-bulk-scheduler.user.js, package.json, .github/ or any other
 file. Do not add dependencies. Do not claim live-X verification.
 
 Run: npm run verify
-Commit, push the branch, open a draft PR that says "Closes #91", and comment the
-PR link on #91. If tests fail, fix them before opening the PR.
+Commit locally only. Do not push, do not open a PR, do not use gh. Report the
+local commit SHA and the exact test counts.
 ```
 
 ## Handoff prompt — browser lane
@@ -137,5 +151,5 @@ PR merges or the claim is released.
 
 | Issue | Lane | Claimed | Branch / PR | Notes |
 |---|---|---|---|---|
-| #91 | T | 2026-11-28 | `feat/91-storage-terminal` | phase 1: `core/storage.js` only |
+| #91 | T | 2026-11-28 | `feat/91-queue-terminal` | phase 1 merged #112; phase 2 `core/queue.js` |
 | #58 | B | 2026-11-27 | `feat/58-url-validation-browser` | URL parser |

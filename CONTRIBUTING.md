@@ -109,11 +109,9 @@ These are product boundaries, not preferences. A PR that crosses them is closed.
 
 ## Licensing
 
-The repository does not have a license file yet; the decision is tracked in
-[#107](https://github.com/eleven-smg/queuebird/issues/107). Until a license is
-added, do not copy this code into another project. By opening a pull request you
-confirm the work is yours and can be distributed under the license the maintainer
-chooses.
+Queuebird is released under the [MIT License](LICENSE). By opening a pull
+request you confirm the work is yours and agree that it is distributed under the
+same MIT terms. Do not paste code you cannot license this way.
 
 ## Communication
 
