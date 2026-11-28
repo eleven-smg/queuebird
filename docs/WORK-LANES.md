@@ -25,9 +25,9 @@ anyone can claim any `status: ready` issue.
 | Lane | Who | Issue | Branch | Files owned | State |
 |---|---|---|---|---|---|
 | **O** | OpenCode (this session) | contribution kit, integration, review | `docs/open-contribution` | `CONTRIBUTING.md`, `.github/`, `core/README.md`, `src/x-bulk-scheduler.user.js` | active |
-| **T** | Terminal OpenCode, DeepSeek free | #88 fixtures + testing docs | `feat/88-fixtures-terminal` | `tests/fixtures/`, `tests/helpers/`, `docs/TESTING.md` | claimed |
+| **T** | Terminal OpenCode, DeepSeek free | #89 changelog + release docs | `feat/89-release-terminal` | `CHANGELOG.md`, `docs/RELEASING.md`, `tests/changelog.test.js` | claimed |
 | **B** | Browser AI | #58 malformed video URLs | `feat/58-url-validation-browser` | `core/url.js`, `tests/url.test.js` | ready |
-| **X** | External contributors | #89, #93, #104, #106 groups | per issue | per issue | open |
+| **X** | External contributors | #93, #104, #106 groups | per issue | per issue | open |
 
 Lane O owns integration and review. It does not take a second code module while
 reviewing. Lanes T and B are deliberately disjoint: availability and URL parsing
@@ -46,17 +46,15 @@ Read first:
 - docs/FEATURE-INVENTORY.md (sections 4 and 11)
 - docs/SAFETY-POLICY.md
 
-Your issue: #88 [INFRA] Real test harness - phase 1: fixtures and testing docs
-Your branch: feat/88-fixtures-terminal
-You own only: tests/fixtures/*, tests/helpers/fixtures.js, tests/fixtures.test.js,
-docs/TESTING.md
+Your issue: #89 [INFRA] Versioning, changelog and releases - phase 1: docs + sync test
+Your branch: feat/89-release-terminal
+You own only: CHANGELOG.md, docs/RELEASING.md, tests/changelog.test.js
 
-Create fixtures for availability, queue and a static harvest page, a small
-fixture loader, one fixture-driven test, and docs/TESTING.md. The fixture test
-runs availability cases through classify, dedupe/merge cases through core/queue,
-and checks that harvest.html contains exactly two unique supported status URLs.
+Write a Keep a Changelog file seeded from the real merged history, a release
+procedure (SemVer, version sync, tags, channels, rollback), and a test that keeps
+the changelog heading and both version fields in sync. Do not create tags,
+releases or branches. Do not edit package.json, src/, core/ or existing tests.
 
-Do not edit existing tests, core/, src/, package.json, .github/ or other docs.
 Do not add dependencies. Do not claim live-X verification.
 
 Run: npm run verify
@@ -130,5 +128,5 @@ PR merges or the claim is released.
 
 | Issue | Lane | Claimed | Branch / PR | Notes |
 |---|---|---|---|---|
-| #88 | T | 2026-11-28 | `feat/88-fixtures-terminal` | phase 1: fixtures + testing docs |
+| #89 | T | 2026-11-28 | `feat/89-release-terminal` | changelog + release docs |
 | #58 | B | 2026-11-27 | `feat/58-url-validation-browser` | URL parser |
