@@ -33,7 +33,7 @@ Run these steps in order.
 2. Bump `package.json` and the userscript `@version` to the same value.
 3. In `CHANGELOG.md`, move the entries out of `## [Unreleased]` into a new
    `## [X.Y.Z] - YYYY-MM-DD` section. Leave an empty `## [Unreleased]` section
-   and update the comparison links at the bottom of the file.
+   and update the comparison links if the file uses them.
 4. Run `npm run verify` and confirm it passes.
 5. Commit the version bump and changelog together.
 6. Tag the commit: `git tag -a vX.Y.Z -m "vX.Y.Z"`.
