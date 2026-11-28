@@ -74,8 +74,8 @@ reviews every PR; `verify` must be green.
 - [Core module contracts](core/README.md) - the pure modules we need next
 - [Code of conduct](CODE_OF_CONDUCT.md)
 
-Good first tasks: **#58** (URL parser), **#89** (release docs), **#88** (test
-harness). Larger: **#91** (storage v2), **#104** (MV3 scaffold).
+Good first tasks: **#58** (URL parser), **#93** (dashboard shell). Larger:
+**#91** (storage v2 follow-ups), **#104** (MV3 scaffold), **#106** (safeguard port).
 
 ## License
 

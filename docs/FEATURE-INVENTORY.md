@@ -14,6 +14,7 @@ This is the baseline for the next feature list. It is a map, not a promise.
 | **Experimental** | Code exists in the `0.13.1-test.4`–`.10` packages, **not in `main`**. Design input, not shipped. |
 | **Planned** | An issue or milestone exists; no product code. |
 | **Module ready** | A pure `core/` module is merged with tests, but it is not yet wired into the userscript. |
+| **Partial** | Some of the capability is merged; the remainder is tracked in the linked issue. |
 | **Blocked** | Cannot be completed without the owner's X account, device, or a decision. |
 | **Out of scope** | Explicitly excluded by `docs/SAFETY-POLICY.md`. |
 
@@ -227,7 +228,7 @@ confirmation panel.
 | Availability module | Pure state machine with provider evidence | Module ready | `core/availability.js`, 8 tests (#110) |
 | Build step | Bundle `core/` + adapters into the userscript artifact | Planned | #103 |
 | MV3 extension | Desktop shell with dashboard | Planned | #104 |
-| Real test harness | Fixtures and browser smoke suite | Planned | #88 |
+| Real test harness | Fixtures and browser smoke suite | Partial | Fixtures + `docs/TESTING.md` (#117); Playwright and importable internals pending |
 | Release hardening | Versioning, changelog, tags, migration | Planned | #89 |
 | Board and labels | Queuebird project, 29 labels, M0–M7 milestones | Shipped | Project #1 |
 
